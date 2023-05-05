@@ -1,0 +1,63 @@
+package com.ayudamayanti.pmsi20c;
+
+import android.content.Intent;
+import android.net.Uri;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.widget.Button;
+
+public class ConstraintActivity extends AppCompatActivity {
+    // deklarasi variable komponen
+    Button btn_kalkulator, btn_teknokrat, btn_telepon;
+
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_constraint);
+
+        //definisi variabel komponen
+        btn_kalkulator = findViewById(R.id.btn_kalkulator);
+        btn_teknokrat = findViewById(R.id.btn_teknokrat);
+        btn_telepon = findViewById(R.id.btn_telepon);
+
+        //buat event untuk "btn_kalkulator
+        btn_kalkulator.setOnClickListener(view -> {
+
+            //deklarasi dan definisi intent
+            //new intent(asal, tujuan);
+            Intent form = new Intent(ConstraintActivity.this, mainactivity.class);
+
+            //jalankan intent
+            startActivity(form);
+
+        });
+
+
+
+        //buat event untuk "btn_teknokrat
+        btn_teknokrat.setOnClickListener(view -> {
+            //deklarasi variabel intent
+            Intent form = new Intent(Intent.ACTION_VIEW);
+            String url = "https://teknokrat.ac.id";
+            //jalankan intent
+            startActivity(form.setData(Uri.parse(url)));
+
+        });
+
+
+
+        //buat event untuk "btn_telepon
+        btn_telepon.setOnClickListener(view -> {
+            //deklarasi variabel intent
+            Intent form = new Intent();
+            form.setAction(Intent.ACTION_DIAL);
+            String number = "085768987403";
+            //jalankan intent
+            startActivity(form.setData(Uri.parse("tel:"+number)));
+
+
+        });
+    }
+}
